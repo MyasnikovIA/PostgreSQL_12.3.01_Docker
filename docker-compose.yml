@@ -1,0 +1,16 @@
+# docker-compose up
+# POSTGRES_DB: UserAppBD
+# PGDATA: /var/lib/postgresql/data/UserAppBD
+
+version: '3'
+services:
+    postgre_12.3:
+      build: .
+      # image: postgres:12.3 # Utiliza una imagen la cual en caso de no tener, la descarga
+      environment:
+        POSTGRES_USER: postgres #CREA UN USUARIO Y UNA BASE DE DATOS CON PRIVILEGIOS
+        POSTGRES_PASSWORD: postgres # LE ASIGNA UNA PASSWORD AL USUARIO Y SU BASE DE DATOS
+      ports:
+        - "5435:5432" # (HOST:CONTAINER)
+      volumes:
+        - ./DB:/var/lib/postgresql/data/
